@@ -1,7 +1,7 @@
 {
   "files": {
     ".editorconfig": "16b725578cc4efd980209803ceb7df16655549d90198b2c5ae8ebb179db9859f",
-    ".github/workflows/checks.yml": "5aec71ed4926c7f6e0070b0ca5f114e3fff90c440da533fcab7fc1eb92aaad43",
+    ".github/workflows/checks.yml": "21fdf291838415864f493565f87a99fa81202ac831aeaa0981676d32415b0c09",
     ".gitignore": "e268f69f9eb1639a538bc9450bfe2c5161d4ec59f1f831bf3bbce05073a16d33",
     "AGENTS.md": "2c40d0eb19bfc97ea289db845311d1b968933f37675b7fe5ffc8d7abe53fcf7e",
     "CONTRIBUTING.md": "a5c4eed33d8ba1bd81fcc78e6526e414990cdbcd278da77cc2bed129ac64156a",

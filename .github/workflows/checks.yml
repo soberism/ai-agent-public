@@ -14,6 +14,8 @@ jobs:
         with:
           version: "0.12.13"
           python-version: "3.14"
+      - name: Install audio conversion dependency
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg
       - run: uv sync --locked
       - run: uv run ruff format --check src tests migrations infra
       - run: uv run ruff check src tests migrations infra
