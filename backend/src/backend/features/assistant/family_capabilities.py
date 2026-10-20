@@ -1,0 +1,88 @@
+"""Allowlisted household membership and single-item sharing operations."""
+
+FAMILY_CAPABILITIES = {
+    "invite_member": (
+        "household_invitations.invite",
+        "邀请成员加入家庭",
+        False,
+        "household",
+        "/family",
+    ),
+    "list_households": (
+        "households.listing",
+        "查询家庭空间",
+        True,
+        "household",
+        "/family",
+    ),
+    "get_household": (
+        "households.detail",
+        "查看家庭成员和邀请",
+        True,
+        "household",
+        "/family",
+    ),
+    "incoming_invitations": (
+        "households.incoming_invitations",
+        "查询收到的家庭邀请",
+        True,
+        "household",
+        "/family",
+    ),
+    "create_household": (
+        "households.create",
+        "创建家庭空间",
+        False,
+        "household",
+        "/family",
+    ),
+    "edit_member": (
+        "households.update_member",
+        "修改家庭成员角色或移出成员",
+        False,
+        "household",
+        "/family",
+    ),
+    "leave_household": (
+        "household_deletion.leave_household",
+        "退出家庭，失去家庭访问权",
+        False,
+        "household",
+        "/family",
+    ),
+    "delete_household": (
+        "household_deletion.delete_household",
+        "删除家庭与成员关系，业务内容保留",
+        False,
+        "household",
+        "/family",
+    ),
+    "decide_invitation": (
+        "household_invitations.decide",
+        "接受或拒绝家庭邀请",
+        False,
+        "household",
+        "/family",
+    ),
+    "sharing_options": (
+        "sharing.options",
+        "查询可共享的家庭成员",
+        True,
+        "sharing",
+        "/family",
+    ),
+    "get_sharing": (
+        "sharing.get_settings",
+        "查看事项共享范围",
+        True,
+        "sharing",
+        "/family",
+    ),
+    "set_sharing": (
+        "sharing.put_settings",
+        "设置事项共享范围",
+        False,
+        "sharing",
+        "/family",
+    ),
+}

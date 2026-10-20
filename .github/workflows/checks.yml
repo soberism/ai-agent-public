@@ -1,0 +1,41 @@
+name: 检查
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.12.13"
+          python-version: "3.14"
+      - run: uv sync --locked
+      - run: uv run ruff format --check src tests migrations infra
+      - run: uv run ruff check src tests migrations infra
+      - run: uv run pytest -q
+        env:
+          RUN_INTEGRATION: "0"
+          EMAIL_SCHEDULER_ENABLED: "false"
+          LANGSMITH_TRACING: "false"
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm run format:check
+      - run: npm run lint
+      - run: npm run build
+      - run: npm audit --audit-level=high

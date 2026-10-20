@@ -1,0 +1,542 @@
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: #282832;
+  background: #faf7f2;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --ink: #282832;
+  --muted: #62616c;
+  --line: #e7e4e1;
+  --paper: #faf7f2;
+  --surface: #fff;
+  --purple: #eee9fb;
+  --purple-ink: #6553a6;
+  --peach: #f7c1a8;
+  --green: #e7f1ec;
+  --red: #a63434;
+  --control-border: #dcd8d4;
+  --focus-ring: rgb(101 83 166 / 18%);
+  --control-radius: 12px;
+  --checkbox-size: 22px;
+  --checkbox-radius: 6px;
+  --control-height: 44px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+html {
+  overscroll-behavior-y: none;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+  overscroll-behavior-y: none;
+}
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+input,
+textarea,
+select {
+  font-size: 16px;
+}
+summary,
+summary * {
+  user-select: none;
+  -webkit-user-select: none;
+}
+summary::selection,
+summary *::selection {
+  background: transparent;
+  color: inherit;
+}
+button,
+.button {
+  border: 1px solid var(--control-border);
+  border-radius: var(--control-radius);
+  background: var(--surface);
+  color: var(--ink);
+  min-height: var(--control-height);
+  padding: 10px 14px;
+  font-weight: 550;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition:
+    background-color 140ms ease-out,
+    border-color 140ms ease-out,
+    color 140ms ease-out,
+    transform 100ms ease-out;
+}
+button:disabled {
+  background: #eeece9;
+  color: #85828a;
+  border-color: #e5e1dd;
+  cursor: default;
+}
+a {
+  color: var(--purple-ink);
+  text-underline-offset: 3px;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+}
+input,
+textarea,
+select {
+  width: 100%;
+  min-width: 0;
+  min-height: var(--control-height);
+  border: 1px solid var(--control-border);
+  border-radius: var(--control-radius);
+  background: var(--surface);
+  color: var(--ink);
+  padding: 12px 13px;
+  display: block;
+  transition:
+    border-color 140ms ease-out,
+    box-shadow 140ms ease-out,
+    background-color 140ms ease-out;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #85818a;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--purple-ink);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--purple-ink);
+}
+input[type="checkbox"] {
+  appearance: none;
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
+  min-height: var(--checkbox-size);
+  flex-shrink: 0;
+  padding: 0;
+  border-radius: var(--checkbox-radius);
+  background: var(--purple-ink);
+  border-color: var(--purple-ink);
+  display: inline-grid;
+  place-content: center;
+  cursor: pointer;
+}
+input[type="checkbox"]::before {
+  content: "";
+  width: 5px;
+  height: 10px;
+  border: solid var(--surface);
+  border-width: 0 2px 2px 0;
+  transform: translateY(-1px) rotate(45deg);
+}
+input[type="checkbox"]:not(:checked) {
+  background: var(--surface);
+  border-color: var(--control-border);
+}
+input[type="checkbox"]:not(:checked)::before {
+  content: none;
+}
+input[type="checkbox"]:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+input[type="file"] {
+  padding: 7px;
+}
+input[type="file"]::file-selector-button {
+  min-height: 30px;
+  margin-right: 10px;
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--purple);
+  color: var(--purple-ink);
+  font: inherit;
+  font-weight: 600;
+}
+select {
+  appearance: auto;
+}
+textarea {
+  resize: vertical;
+}
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+}
+label > input,
+label > textarea,
+label > .password,
+label > .date-field,
+label > .picker-field {
+  margin-top: 8px;
+}
+label > span:last-child {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+}
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+h1 {
+  font-size: 23px;
+  line-height: 1.35;
+  margin-bottom: 0;
+}
+h2 {
+  font-size: 18px;
+}
+h3 {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+}
+.primary {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+.primary:disabled {
+  background: #d8d4d1;
+  border-color: #d8d4d1;
+  color: #77737b;
+}
+.confirm-button:disabled {
+  background: #d8d4d1;
+  border-color: #d8d4d1;
+  color: #77737b;
+}
+.page-header .back {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--purple-ink);
+}
+.page-header .back > span[aria-hidden="true"] {
+  font-size: 28px;
+  line-height: 1;
+}
+@media (hover: hover) {
+  button:hover:not(:disabled):not(.text-button),
+  .button:hover:not(.text-button) {
+    border-color: #c8c2bd;
+    background: #fbfaf8;
+  }
+  .primary:hover:not(:disabled) {
+    background: #3a3a45;
+    border-color: #3a3a45;
+  }
+}
+@media (hover: none) and (pointer: coarse) {
+  button:focus-visible,
+  a:focus-visible {
+    outline: none;
+  }
+}
+.danger {
+  background: #fff0ef;
+  color: var(--red);
+}
+.text-button {
+  border: 0;
+  background: transparent;
+  color: var(--purple-ink);
+  padding: 8px;
+  min-height: 38px;
+}
+.text-button:disabled {
+  background: transparent;
+  color: #85828a;
+}
+.muted {
+  color: var(--muted);
+}
+.small {
+  font-size: 12px;
+}
+.error {
+  color: var(--red);
+}
+.full {
+  width: 100%;
+}
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.modal-actions {
+  display: flex;
+  gap: 10px;
+}
+.modal-actions > * {
+  min-width: 0;
+  flex: 1;
+}
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.chip {
+  border: 0;
+  border-radius: 10px;
+  background: #f1efec;
+  min-height: 36px;
+  padding: 7px 12px;
+  font-size: 14px;
+}
+button.chip {
+  min-height: 44px;
+}
+.selected {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+button.chip.selected {
+  background: var(--purple);
+  color: var(--purple-ink);
+}
+.notice,
+.error-box {
+  padding: 13px 15px;
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+}
+.notice {
+  background: var(--green);
+  margin-bottom: 18px;
+}
+.toast {
+  margin: 0;
+  right: auto;
+  bottom: auto;
+  position: fixed;
+  z-index: 1000;
+  top: calc(16px + env(safe-area-inset-top));
+  left: 50%;
+  width: max-content;
+  max-width: min(358px, calc(100vw - 32px));
+  min-height: 44px;
+  padding: 3px 6px 3px 14px;
+  border: 1px solid #d8cfee;
+  border-radius: 13px;
+  background: var(--purple);
+  color: var(--purple-ink);
+  box-shadow: 0 4px 18px rgb(40 40 50 / 10%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  overflow-wrap: anywhere;
+  transform: translateX(-50%);
+  animation: toast-in 180ms ease-out;
+}
+.toast.error {
+  border-color: #f0ceca;
+  background: #fff0ef;
+  color: var(--red);
+}
+.toast .text-button {
+  position: relative;
+  width: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  padding: 0;
+  color: inherit;
+  font-size: 20px;
+}
+.toast .text-button::after {
+  position: absolute;
+  inset: -4px;
+  content: "";
+}
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    animation: none;
+  }
+}
+.error-box {
+  background: #fff0ef;
+  color: var(--red);
+}
+.state {
+  padding: 72px 20px;
+  text-align: center;
+  max-width: 480px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+.state p,
+.state h2 {
+  margin: 0;
+}
+.state.compact {
+  padding: 32px 10px;
+}
+.not-found {
+  min-height: 100dvh;
+  padding: 20px;
+  justify-content: center;
+}
+.not-found h1 {
+  margin: 0;
+}
+.eyebrow {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 7px;
+}
+dialog {
+  width: calc(100% - 32px);
+  max-width: 430px;
+  border: 0;
+  border-radius: 18px;
+  padding: 22px;
+  background: var(--surface);
+  color: var(--ink);
+  max-height: 85dvh;
+  overflow: auto;
+  overscroll-behavior: contain;
+  box-shadow: 0 18px 54px rgb(40 40 50 / 22%);
+}
+dialog::backdrop {
+  background: rgb(40 40 50 / 42%);
+}
+dialog:focus {
+  outline: none;
+}
+dialog header {
+  position: sticky;
+  top: -22px;
+  z-index: 1;
+  margin: -22px -22px 20px;
+  padding: 22px 22px 14px;
+  background: var(--surface);
+}
+dialog h2 {
+  margin: 0;
+}
+.icon-button {
+  font-size: 25px;
+  padding: 2px 10px;
+  min-width: 38px;
+  min-height: 38px;
+  border: 0;
+  background: transparent;
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    animation: none !important;
+  }
+}
+label + input,
+label + textarea,
+label + .password,
+label + .verification-row {
+  margin-top: 8px;
+}
+.editor label + input ~ span,
+.editor label + textarea ~ span,
+#time-help,
+#password-help {
+  display: block;
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.confirmation-dialog {
+  max-width: 360px;
+  padding: 20px;
+  border-radius: 16px;
+}
+.confirmation-dialog header {
+  position: static;
+  margin: 0 0 12px;
+  padding: 0;
+}
+.confirmation-dialog h2 {
+  font-size: 18px;
+}
+.confirmation-dialog .icon-button {
+  min-width: 44px;
+  min-height: 44px;
+  margin: -8px -8px -8px 0;
+}
+.confirmation-dialog .confirmation-message {
+  margin: 0 0 24px;
+  color: var(--muted);
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.confirmation-dialog .modal-actions {
+  gap: 12px;
+}
+.confirmation-dialog .modal-actions button {
+  min-height: 44px;
+  padding: 10px 12px;
+}
+.confirmation-dialog .error-box {
+  margin: 0 0 16px;
+}

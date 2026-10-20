@@ -1,0 +1,19 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+.local/
+.venv/
+node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+dist/
+*.log
+*.pem
+*.key
+
+# 本地多代理协调运行状态
+.claude-flow/
+
+.ruff_cache/

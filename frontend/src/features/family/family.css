@@ -1,0 +1,239 @@
+.family-page {
+  gap: 24px;
+}
+.family-group {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+.family-group > h2 {
+  margin: 0;
+  font-size: 18px;
+}
+.family-page .feature-card h3 {
+  margin: 0 0 12px;
+  font-size: 15px;
+}
+.family-page .feature-card {
+  min-width: 0;
+}
+.family-page .feature-hero {
+  padding: 16px;
+}
+.family-page .member-access-row {
+  padding: 12px 0;
+}
+.family-page .member-identity small,
+.family-page .plain-list li {
+  overflow-wrap: anywhere;
+}
+.family-owner-role {
+  margin: 0 0 0 50px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.family-disclosure {
+  border-top: 1px solid var(--line);
+}
+.family-disclosure > summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 0;
+  color: var(--ink);
+  list-style: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+.family-disclosure > summary:focus-visible {
+  outline: 3px solid var(--purple-ink);
+  outline-offset: 3px;
+}
+.family-disclosure[open] {
+  padding-bottom: 16px;
+}
+.family-disclosure > p {
+  margin: 0;
+}
+.family-page .family-empty {
+  margin: 0 0 12px;
+  font-size: 13px;
+}
+.family-subsection {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.family-action-form,
+.family-page .compact-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+.family-action-form + .family-action-form {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.family-page .feature-card form > button {
+  width: 100%;
+  margin-top: 0;
+}
+.family-page .feature-card form > .picker-field {
+  margin-top: 0;
+}
+.family-page .picker-trigger > span:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.family-page .family-action-form > button,
+.family-page .compact-form > button,
+.family-page .picker-trigger,
+.family-page input:not([type="checkbox"]) {
+  min-height: var(--control-height);
+  border-radius: var(--control-radius);
+}
+
+.family-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+.family-disclosure > summary::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin-left: auto;
+  margin-right: 3px;
+  border-right: 1.5px solid var(--muted);
+  border-bottom: 1.5px solid var(--muted);
+  transform: rotate(-45deg);
+}
+.family-disclosure[open] > summary::after {
+  transform: rotate(45deg);
+}
+.family-invite-count {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 400;
+}
+.family-disclosure > p.small {
+  font-size: 12px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.family-page .family-invite-form {
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px 12px;
+  margin: 0;
+  align-items: end;
+}
+.family-invite-form > label:first-child {
+  grid-column: 1 / -1;
+}
+.family-invite-form > label {
+  font-size: 12px;
+  font-weight: 500;
+  min-width: 0;
+}
+.family-page .family-invite-form > button {
+  grid-column: auto;
+  width: auto;
+  padding: 10px 16px;
+  font-size: 13px;
+}
+@media (max-width: 359px) {
+  .family-page .family-invite-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .family-page .family-invite-form > button {
+    width: 100%;
+  }
+}
+
+.family-page .family-members-card {
+  padding-bottom: 4px;
+}
+.family-page .family-members-card > .family-disclosure:last-child > summary {
+  padding-bottom: 12px;
+}
+.family-page .member-access-row {
+  gap: 8px;
+}
+.family-hero-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.family-hero-heading h2 {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.family-page .family-delete {
+  color: var(--red);
+  font-size: 12px;
+  flex-shrink: 0;
+  padding: 8px 0 8px 8px;
+}
+
+.family-switcher {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+.family-switcher-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 44px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.family-page .family-create-entry {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  min-height: 44px;
+  padding: 8px 0 8px 8px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.family-create-entry:hover:not(:disabled) {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.family-create-card {
+  display: grid;
+  gap: 24px;
+}
+.family-page .family-create-card h2 {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+.family-create-card .muted {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.family-create-form {
+  display: grid;
+  gap: 24px;
+}
+.family-create-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+.family-create-actions > button {
+  min-height: 44px;
+  min-width: 88px;
+  margin: 0;
+  padding: 10px 20px;
+  border-radius: var(--control-radius);
+}

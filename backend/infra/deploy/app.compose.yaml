@@ -1,0 +1,80 @@
+services:
+  api:
+    image: ${AI_AGENT_IMAGE:-ai-agent-api}:${AI_AGENT_RELEASE:-local}
+    profiles: [app]
+    command:
+      [
+        uvicorn,
+        backend.app:app,
+        --host,
+        0.0.0.0,
+        --port,
+        "8000",
+        --no-proxy-headers,
+      ]
+    restart: unless-stopped
+    mem_limit: 512m
+    env_file: [.app.env]
+    environment:
+      APP_ENV: production
+      LANGSMITH_TRACING: ${LANGSMITH_TRACING:-false}
+      LANGSMITH_PROJECT: ${LANGSMITH_PROJECT:-ai-agent-production}
+      COOKIE_SECURE: "true"
+      TRUSTED_PROXIES: ${TRUSTED_PROXIES:-[]}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:?请配置实际HTTPS来源}
+      POSTGRES_HOST: db
+      POSTGRES_PORT: "5432"
+      REDIS_HOST: redis
+      REDIS_PORT: "6379"
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: "5672"
+    ports:
+      - "127.0.0.1:18000:8000"
+
+  worker:
+    image: ${AI_AGENT_IMAGE:-ai-agent-api}:${AI_AGENT_RELEASE:-local}
+    profiles: [app]
+    command:
+      [
+        celery,
+        -A,
+        backend.features.assistant.agent_celery.celery,
+        worker,
+        --loglevel=INFO,
+        --concurrency=1,
+        --without-gossip,
+        --without-mingle,
+      ]
+    restart: unless-stopped
+    mem_limit: 384m
+    env_file: [.app.env]
+    environment:
+      APP_ENV: production
+      LANGSMITH_TRACING: ${LANGSMITH_TRACING:-false}
+      LANGSMITH_PROJECT: ${LANGSMITH_PROJECT:-ai-agent-production}
+      COOKIE_SECURE: "true"
+      TRUSTED_PROXIES: ${TRUSTED_PROXIES:-[]}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:?请配置实际HTTPS来源}
+      POSTGRES_HOST: db
+      POSTGRES_PORT: "5432"
+      REDIS_HOST: redis
+      REDIS_PORT: "6379"
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: "5672"
+
+  summary-worker:
+    extends:
+      service: worker
+    command:
+      [
+        celery,
+        -A,
+        backend.features.assistant.agent_celery.celery,
+        worker,
+        --loglevel=INFO,
+        --concurrency=1,
+        --without-gossip,
+        --without-mingle,
+        --queues,
+        "${ASSISTANT_SUMMARY_QUEUE:-assistant-summary}",
+      ]
